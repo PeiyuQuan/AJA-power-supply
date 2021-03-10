@@ -1,0 +1,359 @@
+record(mbbo, $(P)reqcontrol)
+	{
+		field(DESC, "Request release control")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto reqcontrol $(PORT)")
+		field(ZRVL, "0x5554")
+		field(ONVL, "0x5555")
+		field(ZRST, "Non control")
+		field(ONST, "control")
+		field(SCAN, "1 second")
+	}
+
+record(bi, $(P)reqcontrolresult)
+	{
+		field(DESC, "The result of Request release control")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto reqcontrol $(PORT)")
+		field(ZNAM, "1")
+		field(ONAM, "0")
+	}
+	
+record(bo, $(P)Ping)
+	{
+		field(DESC, "check for communication with device")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto Ping $(PORT)")
+	}
+	
+record(mbbo, $(P)RFonoff)
+	{
+		field(DESC, "RFONOFF")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto RFonoff $(PORT)")
+		field(ZRVL, "0x5554")
+		field(ONVL, "0x5555")
+		field(ZRST, "OFF")
+		field(ONST, "ON")
+	}
+	
+record(ao, $(P)setpowerlevel)
+	{
+		field(DESC, "set point power")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto setpowerlevel $(PORT)")
+		field(EGU, "watts")
+		field(HOPR,"4000")
+		field(LOPR,"0")
+	}
+
+record(ao, $(P)setaioscale)
+	{
+		field(DESC, "input/output scaling")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto setaioscale $(PORT)")
+		field(EGU, "mV")
+		field(HOPR,"10000")
+		field(LOPR,"1000")
+		field(PREC,"2")
+	}
+ 	
+record(mbbo, $(P)setoperatingmode)
+	{
+		field(DESC, "operation mode")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto setoperatingmode $(PORT)")
+		field(ZRVL, "1")
+		field(ONVL, "2")
+		field(TWVL, "3")
+		field(THVL, "4")
+		field(ZRST, "NORMAL")
+		field(ONST, "INVALID")
+		field(TWST, "INVALID")
+		field(THST, "RAMP")
+	}
+
+record(mbbo, $(P)setRFsource)
+	{
+		field(DESC, "RF source")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto setRFsource $(PORT)")
+		field(ZRVL, "1")
+		field(ONVL, "2")
+		field(ZRST, "INTERNAL SOURCE")
+		field(ONST, "EXTERNAL SOURCE")
+	}
+
+record(mbbo, $(P)setuserlimit)
+	{
+		field(DESC, "RF source")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto setuserlimit $(PORT)")
+		field(ZRVL, "1")
+		field(ONVL, "2")
+		field(ZRST, "FORWARD POWER LIMIT")
+		field(ONST, "REVERSE POWER LIMIT")
+	}
+	
+record(ao, $(P)setuserlimitlevel)
+	{
+		field(DESC, "RF source")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto setuserlimit $(PORT)")
+		field(HOPR, "4000")
+		field(LOPR, "0")
+		field(EGU, "watts")
+	}
+
+record(ao, $(P)setramprate)
+	{
+		field(DESC, "Ramp rate")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto setramprate $(PORT)")
+		field(HOPR, "99")
+		field(LOPR, "1")
+		field(EGU, "watts/second")
+	}
+
+record(ao, $(P)setrampstartpower)
+	{
+		field(DESC, "start-power level")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto setrampstartpower $(PORT)")
+		field(HOPR, "4000")
+		field(LOPR, "1")
+		field(EGU, "watts")
+	}
+ 	
+record(mbbo, $(P)settunercappositions)
+	{
+		field(DESC, "RF source")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto settunercappositions $(PORT)")
+		field(ONVL, "1")
+		field(TWVL, "2")
+		field(ONST, "LC POSITION")
+		field(TWST, "TC POSITION")
+	}
+
+record(ao, $(P)settcpPARM2)
+	{
+		field(DESC, "RF source")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto settunercappositions $(PORT)")
+		field(HOPR, "100")
+		field(LOPR, "0")
+	}
+
+record(mbbo, $(P)settunermode)
+	{
+		field(DESC, "RF source")
+		field(DTYP, "stream")
+		field(OUT,"@AJA-powersupply.proto settunermode $(PORT)")
+		field(ZRVL, "1")
+		field(ONVL, "2")
+		field(ZRST, "AUTO")
+		field(ONST, "MANUAL")
+	} 
+
+record(ai, $(P)getFRQH)
+	{
+		field(DESC, "HI WORD")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getfrequency $(PORT)")
+		field(EGU,"watts")
+	}
+	
+record(ai, $(P)getFRQL)
+	{
+		field(DESC, "LO WORD")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getfrequency $(PORT)")
+		field(EGU,"watts")
+	}
+ 
+record(ai, $(P)getpowerSPlevel)
+	{
+		field(DESC, "present set point level")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getpowerSPlevel $(PORT)")
+		field(EGU,"watts")
+	}
+ 
+record(ai, $(P)getforwardpower)
+	{
+		field(DESC, "FORWARD POWER")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getpowerreading $(PORT)")
+		field(EGU,"watts")
+	}
+	
+record(ai, $(P)getreversepower)
+	{
+		field(DESC, "REVERSE POWER")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getpowerreading $(PORT)")
+		field(EGU,"watts")
+	}
+	
+record(ai, $(P)getloadpower)
+	{
+		field(DESC, "LOAD POWER")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getpowerreading $(PORT)")
+		field(EGU,"watts")
+	}
+ 
+record(ai, $(P)getrampstart)
+	{
+		field(DESC, "ramp starting power")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getrampparameters $(PORT)")
+		field(EGU,"watts")
+	}
+	
+record(ai, $(P)getramprate)
+	{
+		field(DESC, "ramp rate")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getrampparameters $(PORT)")
+		field(EGU,"watts/second")
+	}
+ 	
+record(mbbi, $(P)getgenTuner)
+	{
+		field(DESC, "RF source")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getgenstatus $(PORT)")
+		field(ZRVL, "1")
+		field(ONVL, "2")
+		field(TWVL, "3")
+		field(THVL, "4")
+		field(ZRST, "NONE")
+		field(ONST, "AFT GENERATOR")
+		field(TWST, "ANALOG TUNER")
+		field(THST, "DIGITAL TUNER")
+	}
+
+record(mbbi, $(P)getgenOpmode)
+	{
+		field(DESC, "opmode")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getgenstatus $(PORT)")
+		field(ZRVL, "1")
+		field(ONVL, "4")
+		field(ZRST, "NORMAL")
+		field(ONST, "RAMP")
+	}	
+	
+record(ai, $(P)getgenTemperature)
+	{
+		field(DESC, "TEMP")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getgenstatus $(PORT)")
+		field(EGU,"Celsius")
+		field(PREC,"1")
+	}
+	
+record(mbbiDirect, $(P)getgenStatus)
+	{
+		field(DESC, "STATUS")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getgenstatus $(PORT)")
+		field(B0, "1")
+		field(B1, "0")
+		field(B2, "0")
+		field(B3, "0")
+		field(B4, "1")
+		field(B5, "0")
+		field(B6, "0")
+		field(B7, "0")
+		field(B8, "1")
+		field(B9, "1")
+		field(BA, "1")
+		field(BB, "1")
+		field(BC, "0")
+		field(BD, "0")
+		field(BE, "1")
+		field(BF, "0")
+	}
+
+record(mbbiDirect, $(P)gettunerStatus)
+	{
+		field(DESC, "STATUS")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto gettunerstatus $(PORT)")
+		field(B0, "1")
+		field(B1, "1")
+		field(B2, "0")
+		field(B3, "0")
+		field(B4, "1")
+		field(B5, "1")
+		field(B6, "1")
+		field(B7, "1")
+		field(B8, "0")
+		field(B9, "0")
+		field(BA, "0")
+		field(BB, "0")
+		field(BC, "0")
+		field(BD, "0")
+		field(BE, "1")
+		field(BF, "0")
+	}
+	
+record(ai, $(P)gettunerLCPOS)
+	{
+		field(DESC, "LOAD cap position")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto gettunerstatus $(PORT)")
+	}
+	
+record(ai, $(P)gettunerTCPOS)
+	{
+		field(DESC, "TUNE cap position")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto gettunerstatus $(PORT)")
+	}
+	
+record(ai, $(P)gettunerVDC)
+	{
+		field(DESC, "currently selected preset location")
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto gettunerstatus $(PORT)")
+		field(EGU,"volts")
+	}
+record(ai, $(P)UIPMAJOR)
+	{
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getfirmwareversions $(PORT)")
+	}
+
+record(ai, $(P)UIPMINOR)
+	{
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getfirmwareversions $(PORT)")
+	}
+
+record(ai, $(P)RFMAJOR)
+	{
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getfirmwareversions $(PORT)")
+	}
+
+record(ai, $(P)RFMINOR)
+	{
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getfirmwareversions $(PORT)")
+	}	
+	
+record(ai, $(P)TAG)
+	{
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getIDstrings $(PORT)")
+	}
+	
+record(ai, $(P)STRING)
+	{
+		field(DTYP, "stream")
+		field(INP,"@AJA-powersupply.proto getIDstrings $(PORT)")
+	}
